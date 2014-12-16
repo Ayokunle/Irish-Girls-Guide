@@ -1,0 +1,59 @@
+<?php session_start(); ?>
+
+<!DOCTYPE HTML>
+
+
+
+<html lang="en">
+
+	<head>
+
+		<title></title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+		<script src="http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+		
+
+
+	</head>
+
+	<body> <!-- Program body -->
+
+		
+			<input type="text" id="plain" value="Enter new password">
+
+			<p>
+				<div id="msg"></div>
+				<div><input type="text" id="hashed" style="display:none; width:300px;"></div>
+			</p>
+			
+			
+			
+
+		
+
+		
+		<div id="nextbtn">
+			<input type="submit" value="ENCRYPT" style="margin-left:80px;" onclick="encryptMe()">
+		</div>
+
+	</body>
+
+</html>
+
+
+<script>
+
+	function encryptMe(){
+		var hash = CryptoJS.SHA1($('#plain').val());
+		$('#hashed').show();
+		$('#hashed').val(hash);
+		$('#msg').text("Copy the generated hash and insert it into db_config.php file ");
+
+	}
+
+</script>
